@@ -1,0 +1,146 @@
+/* Ocultar contenido principal hasta que se ingrese datos */
+.hidden {
+  display: none;
+}
+
+/* Fuente moderna y fondo general */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #e0f7fa, #e0ffe0);
+  color: #1b3c44;
+  margin: 0;
+}
+
+/* Encabezados */
+h1, h2, h5 {
+  color: #00695c;
+  font-weight: bold;
+}
+
+/* Botones estilo fresco */
+.btn-primary {
+  background: linear-gradient(to right, #00796b, #4db6ac);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.btn-success {
+  background: linear-gradient(to right, #388e3c, #81c784);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.btn-danger {
+  background: linear-gradient(to right, #0288d1, #4fc3f7);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-success,
+.btn-outline-dark {
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* Fondo de secciones */
+#inicio {
+  background: linear-gradient(to right, #b2dfdb, #e0f2f1);
+  padding: 40px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+#galeria {
+  background-color: #e8f5e9;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+#contacto {
+  background-color: #f1f8e9;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tarjetas de películas */
+.card {
+  border-radius: 15px;
+  background-color: #e0f2f1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-title {
+  color: #00796b;
+}
+
+/* Modal personalizado */
+.modal-content {
+  background: linear-gradient(to right, #b2dfdb, #e0f2f1);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
+
+/* Formulario */
+input.form-control,
+textarea.form-control {
+  border: 1px solid #4db6ac;
+  border-radius: 8px;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  border-color: #00796b;
+  box-shadow: 0 0 0 0.2rem rgba(0, 121, 107, 0.25);
+}
+
+/* Carrito */
+.container h3 {
+  color: #004d40;
+}
+
+/* -------------------------- */
+/* Sobrescritura colores Bootstrap para modal */
+/* -------------------------- */
+
+.bg-teal {
+  background-color: #0d6b67 !important; /* teal más oscuro */
+  color: white !important;
+}
+
+.bg-light {
+  background-color: #e9ecef !important; /* gris claro más oscuro */
+}
+
+.btn-info {
+  background-color: #0a58ca !important; /* azul info más oscuro */
+  border-color: #0a58ca !important;
+  color: white !important;
+}
+
+.border-primary {
+  border-color: #0b5ed7 !important; /* azul borde más oscuro */
+}
+.modal-header.bg-teal .modal-title {
+  color: white !important;
+}

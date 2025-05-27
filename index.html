@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Renta Películas</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- MODAL DE BIENVENIDA PERSONALIZADO -->
+  <div class="modal fade show d-block custom-modal" id="userModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-style border-0 shadow-lg">
+        <div class="modal-header bg-teal text-white rounded-top">
+          <h5 class="modal-title">¡Bienvenido a FilmRent!</h5>
+        </div>
+        <div class="modal-body bg-light">
+          <p class="text-center mb-3" style="font-weight: bold; color: #0d6b67;">
+            Esta es una plataforma donde puedes <strong>rentar películas</strong> de diferentes géneros y disfrutarlas
+            desde casa.
+          </p>
+          <p class="text-center mb-4" style="font-weight: bold; color: #0d6b67;">
+            Para ingresar a la página, por favor <strong>inicia sesión</strong> completando el siguiente formulario.
+          </p>
+          <form id="userForm">
+            <div class="mb-3">
+              <label for="userName" class="form-label">Nombre</label>
+              <input type="text" class="form-control border-primary" id="userName" placeholder="Escribe tu nombre"
+                required />
+            </div>
+            <div class="mb-3">
+              <label for="userLastName" class="form-label">Apellido</label>
+              <input type="text" class="form-control border-primary" id="userLastName" placeholder="Escribe tu apellido"
+                required />
+            </div>
+            <div class="mb-3">
+              <label for="userAge" class="form-label">Edad</label>
+              <input type="number" class="form-control border-primary" id="userAge" placeholder="Tu edad" required />
+            </div>
+            <div class="mb-3">
+              <label for="userEmail" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control border-primary" id="userEmail" placeholder="correo@ejemplo.com"
+                required />
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-info text-white fw-bold">Ingresar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="container hidden" id="mainContent">
+
+
+    <!-- INICIO -->
+    <section id="inicio" class="my-5">
+      <h1 class="text-center">Renta de Películas Online</h1>
+      <p class="text-center">
+        Disfruta de los mejores estrenos desde la comodidad de tu casa. Elige entre cientos de títulos disponibles.
+      </p>
+    </section>
+    
+    <!-- GALERÍA -->
+    <section id="galeria" class="my-5">
+      <h2 class="mb-4">Galería de Películas</h2>
+      <div class="mb-3 text-center">
+        <button id="btn-accion" class="btn btn-outline-primary filter-btn mx-1" data-filter="accion">Acción</button>
+        <button id="btn-comedia" class="btn btn-outline-secondary filter-btn mx-1"
+          data-filter="comedia">Comedia</button>
+        <button id="btn-infantil" class="btn btn-outline-success filter-btn mx-1"
+          data-filter="infantil">Infantil</button>
+        <button id="btn-romance" class="btn btn-outline-danger filter-btn mx-1" data-filter="romance">Romance</button>
+        <button id="btn-todas" class="btn btn-outline-dark filter-btn mx-1" data-filter="all">Todas</button>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4" id="galeriaContenido">
+        <!-- Tarjeta Acción deadpool -->
+        <div class="col movie-card accion" id="card-deadpool2">
+          <div class="card">
+            <img src="imagenes\Deadpool -Comedia -accion.jpg" class="card-img-top" alt="Deadpool 2" />
+            <div class="card-body">
+              <h5 class="card-title">Deadpool 2</h5>
+              <p class="card-text">Deadpool 2 es una comedia de acción irreverente donde el antihéroe Wade Wilson forma
+                un equipo para proteger a un joven mutante mientras enfrenta villanos y situaciones llenas de humor y
+                explosiones</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Deadpool 2">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        <!-- Tarjeta Acción El protector -->
+        <div class="col movie-card accion" id="card-elprotector">
+
+          <div class="card">
+            <img src="imagenes\El protector-accion.jpg" class="card-img-top" alt="El protector" />
+            <div class="card-body">
+              <h5 class="card-title">El protector</h5>
+              <p class="card-text">Es una película de acción donde un exagente secreto llamado Robert McCall usa sus
+                habilidades para proteger a personas inocentes y combatir a criminales peligrosos. Con astucia y fuerza,
+                busca justicia para quienes no pueden defenderse.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="El protector">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        <!-- Tarjeta Acción Venom -->
+        <div class="col movie-card accion" id="card-venom">
+          <div class="card">
+            <img src="imagenes\Venom-accion.jpg" class="card-img-top" alt="Venom" />
+            <div class="card-body">
+              <h5 class="card-title">Venom</h5>
+              <p class="card-text">Venom es una película de acción y ciencia ficción que sigue a Eddie Brock, un
+                periodista que se fusiona con un ente alienígena llamado Venom. Juntos forman un ser con habilidades
+                sobrehumanas y una personalidad violenta. Aunque al principio luchan por controlarse, terminan uniendo
+                fuerzas para enfrentar a enemigos más peligrosos.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Venom">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Acción Rambo -->
+        <div class="col movie-card accion" id="card-rambo">
+          <div class="card">
+            <img src="imagenes\Rambo-accion.jpg" class="card-img-top" alt="Rambo" />
+            <div class="card-body">
+              <h5 class="card-title">Rambo</h5>
+              <p class="card-text">Rambo es una película de acción que sigue a John Rambo, un exsoldado de élite con
+                habilidades de combate. Al ser maltratado por la policía, desata una guerra en solitario en defensa
+                propia. La historia muestra los traumas de la guerra y la lucha de un hombre incomprendido por la
+                sociedad</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Rambo">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Acción Dunkerque -->
+        <div class="col movie-card accion" id="card-dunkerque">
+          <div class="card">
+            <img src="imagenes\dunkerque-accion.jpg" class="card-img-top" alt="Dunkerque" />
+            <div class="card-body">
+              <h5 class="card-title">Dunkerque</h5>
+              <p class="card-text">Dunkerque es una película bélica que narra la evacuación de soldados aliados de
+                Dunkerque durante la Segunda Guerra Mundial. A través de tres perspectivas —tierra, mar y aire— muestra
+                la tensión, el coraje y la lucha por sobrevivir bajo el constante ataque enemigo.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Dunkerque">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        <!-- Tarjeta infantil shrek  -->
+        <div class="col movie-card infantil" id="card-shrek">
+          <div class="card h-100">
+            <img src="imagenes\Shrek - infantil.jpg" class="card-img-top" alt="shrek">
+            <div class="card-body">
+              <h5 class="card-title">shrek</h5>
+              <p class="card-text">Shrek es una divertida aventura animada que sigue a un ogro gruñón que, junto a un
+                burro parlante, emprende una misión para rescatar a la princesa Fiona, enfrentando desafíos y
+                descubriendo el valor de la amistad y el amor verdadero</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="shrek">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta infantil Era de hielo 3  -->
+        <div class="col movie-card infantil" id="card-era-de-hielo-3">
+          <div class="card">
+            <img src="imagenes\La era de hielo 3.jpg" class="card-img-top" alt="Era de hielo 3" />
+            <div class="card-body">
+              <h5 class="card-title">Era de hielo 3</h5>
+              <p class="card-text">El origen de los dinosaurios es la tercera entrega de la popular saga animada. En
+                esta aventura, Manny y Ellie esperan a su primer hijo, mientras Sid, deseando formar su propia familia,
+                adopta tres huevos de dinosaurio. Esto lo lleva a ser secuestrado por la madre dinosaurio y llevado a un
+                mundo subterráneo lleno de criaturas prehistóricas.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Era de hielo 3">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        <!-- Tarjeta infantil el libro de la vida  -->
+        <div class="col movie-card infantil" id="card-el-libro-de-la-vida">
+          <div class="card">
+            <img src="imagenes\El libro de la vida-Infantil.jpg" class="card-img-top" alt="El libro de la vida" />
+            <div class="card-body">
+              <h5 class="card-title">El libro de la vida</h5>
+              <p class="card-text">El Libro de la Vida es una película animada que sigue la aventura de Manolo, un joven
+                que debe elegir entre cumplir con las expectativas de su familia o seguir su propio corazón. En un viaje
+                mágico por el Mundo de los Muertos, descubre el valor del amor, la valentía y la tradición.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="El libro de la vida">Agregar al
+                carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta infantil Hotel transilvania  -->
+        <div class="col movie-card infantil" id="card-hotel-transilvania">
+          <div class="card">
+            <img src="imagenes\hotel transilvania -infantil.jpg" class="card-img-top" alt="Hotel transilvania" />
+            <div class="card-body">
+              <h5 class="card-title">Hotel transilvania</h5>
+              <p class="card-text">Hotel Transilvania es una película animada donde Drácula dirige un hotel exclusivo
+                para monstruos. Todo va bien hasta que un humano llamado Jonathan llega por accidente y se enamora de
+                Mavis, la hija de Drácula. Esto causa caos y situaciones cómicas mientras Drácula intenta evitar que los
+                humanos descubran su mundo.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Hotel transilvania">Agregar al
+                carrito</button>
+            </div>
+          </div>
+        </div>
+        <!-- Tarjeta infantil Coco  -->
+        <div class="col movie-card infantil" id="card-coco">
+          <div class="card">
+            <img src="imagenes\coco-infantil.jpg" class="card-img-top" alt="Coco" />
+            <div class="card-body">
+              <h5 class="card-title">Coco</h5>
+              <p class="card-text">Coco es una película animada que sigue a Miguel, un niño que sueña con ser músico,
+                pero su familia lo prohíbe. En el Día de los Muertos, viaja al Mundo de los Muertos, donde descubre
+                secretos sobre sus antepasados y el verdadero valor de la familia, la memoria y la música.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Coco">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Comedia ¿Y donde estan las rubias..? -->
+        <div class="col movie-card comedia" id="card-donde-estan-las-rubias">
+          <div class="card">
+            <img src="imagenes\Comedia -Las rubias.jpg" class="card-img-top" alt="¿Y donde estan las rubias..?" />
+            <div class="card-body">
+              <h5 class="card-title">¿Y donde estan las rubias..? </h5>
+              <p class="card-text">Dónde están las rubias es una comedia llena de enredos donde dos agentes del FBI se
+                disfrazan de hermanas rubias para resolver un caso de secuestro en un exclusivo barrio, enfrentando
+                situaciones hilarantes y malentendidos</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="¿Y donde estan las rubias..?">Agregar al
+                carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Comedia Dr Dolittle -->
+        <div class="col movie-card comedia" id="card-dr-dolittle">
+          <div class="card">
+            <img src="imagenes\dr dolittle-comedia.jpg" class="card-img-top" alt="Dr Dolittle" />
+            <div class="card-body">
+              <h5 class="card-title">Dr Dolittle </h5>
+              <p class="card-text">Doctor Dolittle es una película familiar sobre un médico que descubre que puede
+                hablar con los animales. Usando este don, vive divertidas y emocionantes aventuras mientras ayuda a
+                criaturas de todo tipo, enfrentando desafíos con humor y corazón.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Dr Dolittle">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Comedia Norbit -->
+        <div class="col movie-card comedia" id="norbit">
+          <div class="card">
+            <img src="imagenes\Norbit-comedia.jpg" class="card-img-top" alt="Norbit" />
+            <div class="card-body">
+              <h5 class="card-title">Norbit </h5>
+              <p class="card-text">Norbit es una comedia protagonizada por Eddie Murphy, quien interpreta a varios
+                personajes. La historia sigue a Norbit, un hombre tímido atrapado en un matrimonio abusivo con Rasputia.
+                Su vida cambia cuando reaparece su amor de la infancia, y lucha por recuperar su felicidad y libertad.
+              </p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Norbit">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Tarjeta Comedia ¿Que paso ayer ? -->
+        <div class="col movie-card comedia" id="que-paso-ayer">
+          <div class="card">
+            <img src="imagenes\Que paso ayer- comedia.jpg" class="card-img-top" alt="¿Qué paso ayer?" />
+            <div class="card-body">
+              <h5 class="card-title">¿Qué paso ayer?</h5>
+              <p class="card-text">¿Qué pasó ayer? es una comedia sobre tres amigos que, tras una fiesta en Las Vegas,
+                despiertan sin recuerdos y sin saber dónde está su amigo novio. Entre situaciones locas y divertidas,
+                intentan encontrarlo antes de su boda</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="¿Qué paso ayer ?">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Romance A todos los chicos de los que me enamore -->
+        <div class="col movie-card romance" id="a-todos-los-chicos">
+          <div class="card">
+            <img src="imagenes\a todos los hombres de los que me enamore-romance.jpg" class="card-img-top"
+              alt="A todos los chicos de los que me enamoré" />
+            <div class="card-body">
+              <h5 class="card-title">A todos los chicos de los que me enamoré</h5>
+              <p class="card-text">A todos los chicos de los que me enamoré es una comedia romántica sobre Lara Jean,
+                una chica que escribe cartas secretas a sus enamorados pero nunca las envía. Cuando sus cartas son
+                enviadas accidentalmente, enfrenta situaciones divertidas y aprende sobre el amor y la valentía para
+                abrir su corazón.</p>
+              <button class="btn btn-success add-to-cart-btn"
+                data-title="A todos los chicos de los que me enamoré">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Romance Yo antes de ti -->
+        <div class="col movie-card romance" id="yo-antes-de-ti">
+          <div class="card">
+            <img src="imagenes\yo antes de ti-romance.jpg" class="card-img-top" alt="Yo antes de ti" />
+            <div class="card-body">
+              <h5 class="card-title">Yo antes de ti</h5>
+              <p class="card-text">Yo antes de ti es una película romántica que cuenta la historia de Louisa, una joven
+                alegre que se convierte en cuidadora de Will, un hombre paralizado tras un accidente. A través de su
+                relación, ambos descubren el amor, el valor de la vida y la importancia de tomar decisiones difíciles.
+              </p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Yo antes de ti">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Romance Un amor imposible -->
+        <div class="col movie-card romance" id="un-amor-imposible">
+          <div class="card">
+            <img src="imagenes\un amor imposible - romance.jpg" class="card-img-top" alt="Un amor imposible " />
+            <div class="card-body">
+              <h5 class="card-title">Un amor imposible </h5>
+              <p class="card-text">Un amor imposible es un drama romántico basado en hechos reales que narra la historia
+                de Rachel, una mujer que lucha contra las barreras sociales y familiares para mantener su amor por
+                Philippe, un hombre de clase alta en la Francia de posguerra. La película explora temas de lucha,
+                sacrificio y la fuerza del amor frente a las adversidades.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Un amor imposible ">Agregar al
+                carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Romance Corazones malheridos -->
+        <div class="col movie-card romance" id="corazones-malheridos">
+          <div class="card">
+            <img src="imagenes\corazones malheridos -romance.jpg" class="card-img-top" alt="Corazones malheridos" />
+            <div class="card-body">
+              <h5 class="card-title">Corazones malheridos</h5>
+              <p class="card-text">Corazones malheridos es un drama que sigue a varios personajes que enfrentan
+                pérdidas, traiciones y heridas emocionales. A lo largo de la historia, buscan sanar sus heridas
+                internas, superar el dolor y encontrar esperanza en medio de la adversidad y el sufrimiento.</p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Corazones malheridos">Agregar al
+                carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Romance Culpa mía -->
+        <div class="col movie-card romance" id="culpa-mia">
+          <div class="card">
+            <img src="imagenes\culpa mia -romance.jpg" class="card-img-top" alt="Culpa mía" />
+            <div class="card-body">
+              <h5 class="card-title">Culpa mía</h5>
+              <p class="card-text">Culpa mía es una película romántica basada en la novela de Mercedes Ron. Narra la
+                historia de Nick y Noah, dos jóvenes con personalidades opuestas que, a pesar de sus diferencias y
+                conflictos, desarrollan una intensa y complicada relación llena de pasión, secretos y retos emocionales.
+              </p>
+              <button class="btn btn-success add-to-cart-btn" data-title="Culpa mía">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="my-5">
+      <h2>Contacto</h2>
+      <form id="contactForm">
+        <div class="mb-3">
+          <label for="nombreContacto" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombreContacto" required />
+        </div>
+        <div class="mb-3">
+          <label for="emailContacto" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="emailContacto" required />
+        </div>
+        <div class="mb-3">
+          <label for="mensajeContacto" class="form-label">Mensaje</label>
+          <textarea class="form-control" id="mensajeContacto" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS personalizado -->
+  <script src="script.js"></script>
+
+  <div class="container my-4">
+    <h3>Carrito de alquiler</h3>
+    <ul class="list-group" id="cartList"></ul>
+    <button class="btn btn-danger mt-2" id="clearCartBtn">Vaciar carrito</button>
+  </div>
+  
+
+</body>
+
+</html>
